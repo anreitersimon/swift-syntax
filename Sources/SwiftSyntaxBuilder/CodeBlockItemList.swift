@@ -40,7 +40,7 @@ extension MemberDeclList {
 
     public init(combining lists: [ExpressibleAsMemberDeclList]) {
         self.elements = lists.flatMap {
-            $0.createMemberDeclListItem().elements
+            $0.createMemberDeclList().elements
         }
     }
 
