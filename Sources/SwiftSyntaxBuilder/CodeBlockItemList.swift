@@ -17,3 +17,12 @@ extension CodeBlockItemListBuilder {
     }
 }
 
+extension CodeBlockItemList {
+
+    public init(combining codeBlockItemLists: [ExpressibleAsCodeBlockItemList]) {
+        self.elements = codeBlockItemLists.flatMap {
+            $0.createCodeBlockItemList().elements
+        }
+    }
+
+}
