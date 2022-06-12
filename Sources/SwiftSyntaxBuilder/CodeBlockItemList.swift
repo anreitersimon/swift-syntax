@@ -19,9 +19,28 @@ extension CodeBlockItemListBuilder {
 
 extension CodeBlockItemList {
 
-    public init(combining codeBlockItemLists: [ExpressibleAsCodeBlockItemList]) {
-        self.elements = codeBlockItemLists.flatMap {
+    public init(combining lists: [ExpressibleAsCodeBlockItemList]) {
+        self.elements = lists.flatMap {
             $0.createCodeBlockItemList().elements
+        }
+    }
+
+}
+
+
+
+extension MemberDeclListBuilder {
+
+    public static func buildExpression(_ expression: MemberDeclList) -> Component {
+        return expression.elements
+    }
+}
+
+extension MemberDeclList {
+
+    public init(combining lists: [ExpressibleAsMemberDeclList]) {
+        self.elements = lists.flatMap {
+            $0.createMemberDeclListItem().elements
         }
     }
 
